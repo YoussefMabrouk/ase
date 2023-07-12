@@ -39,7 +39,7 @@ class RSMD(FileIOCalculator):
         for (FileName, ParameterName, Parameter) in ("INPUT", "ncycles", ncycles), ("cycle.mdp", "nsteps", nsteps):
             InputFile = open(FileName).readlines()
             ParamLine = InputFile.index([Line for Line in InputFile if Parameter in Line][0])
-            InputFile[ParamLine] = Parameter + "     = " + str(int(WanoFile["Parameters"][0][Parameter])) + " \n"
+            InputFile[ParamLine] = ParameterName + "     = " + Parameter + " \n"
             
             with open(FileName, "w") as Line:
                 for LinePrime in InputFile:
